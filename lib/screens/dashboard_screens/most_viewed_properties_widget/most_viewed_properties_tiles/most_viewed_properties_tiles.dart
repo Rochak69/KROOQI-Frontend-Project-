@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/apartment_location_and_price.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/bottom_three_icons.dart';
+import 'package:flutter_application_1/screens/property_details/details_screen/property_details_photos.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../constants/theme.dart';
@@ -10,34 +11,39 @@ class MostViewedPropertiesTiles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: _boxDecorationTiles(),
-      child: Column(
-        children: [
-          _buildPropertyImage(),
-          _buildPublishedDate(),
-          _buildApartmentName(),
-          const SizedBox(height: 5),
-          Padding(
-            padding: const EdgeInsets.only(right: 18.0, left: 18.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                const ApartmentLocationAndPrice(),
-                const SizedBox(height: 7),
-                const Divider(thickness: 2),
-                const SizedBox(height: 7),
-                _buildProfileName(),
-                const SizedBox(height: 7),
-                _buildProfileCompletionIndicator(),
-                const SizedBox(height: 8),
-                _buildProfileCompletionValue(),
-                const SizedBox(height: 20),
-                const BottomThreeIcons()
-              ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, PropertyDetailsPhotos.name);
+      },
+      child: Container(
+        decoration: _boxDecorationTiles(),
+        child: Column(
+          children: [
+            _buildPropertyImage(),
+            _buildPublishedDate(),
+            _buildApartmentName(),
+            const SizedBox(height: 5),
+            Padding(
+              padding: const EdgeInsets.only(right: 18.0, left: 18.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  const ApartmentLocationAndPrice(),
+                  const SizedBox(height: 7),
+                  const Divider(thickness: 2),
+                  const SizedBox(height: 7),
+                  _buildProfileName(),
+                  const SizedBox(height: 7),
+                  _buildProfileCompletionIndicator(),
+                  const SizedBox(height: 8),
+                  _buildProfileCompletionValue(),
+                  const SizedBox(height: 20),
+                  const BottomThreeIcons()
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

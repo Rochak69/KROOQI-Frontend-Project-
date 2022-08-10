@@ -6,6 +6,9 @@ import 'package:flutter_application_1/screens/my_account_screens/my_account_scre
 
 import 'package:flutter_application_1/screens/my_account_screens/settings_screen/faq.dart';
 import 'package:flutter_application_1/screens/my_account_screens/settings_screen/privacy_and_policy.dart';
+import 'package:flutter_application_1/screens/property_details/details_screen/map_view.dart';
+import 'package:flutter_application_1/screens/property_details/details_screen/property_details_photos.dart';
+import 'package:flutter_application_1/screens/property_details/details_screen/video.dart';
 
 import 'screens/my_account_screens/settings_screen/terms_and_conditions.dart';
 import 'screens/screens.dart';
@@ -31,5 +34,8 @@ class AppRouter {
     MyAccountScreen.name: ((context) => const MyAccountScreen()),
     FAQ.name: ((context) => const FAQ()),
     TermsAndConditions.name: ((context) => const TermsAndConditions()),
+    PropertyDetailsPhotos.name: ((context) => const PropertyDetailsPhotos()),
+    PropertyMapView.name: ((context) => const PropertyMapView()),
+    PropertyVideo.name: ((context) => const PropertyVideo()),
   };
 }
