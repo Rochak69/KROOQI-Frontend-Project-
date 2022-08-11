@@ -9,20 +9,20 @@ class PropertyAmenities extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: EdgeInsets.all(25),
+          padding: const EdgeInsets.all(25),
           color: Colors.white,
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               _buildFirstRow(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildSecondRow(),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               _buildThirdRow(),
             ],
           ),
         ),
-        DetailsExpansionTiles()
+        const DetailsExpansionTiles()
       ],
     );
   }
@@ -36,7 +36,7 @@ class PropertyAmenities extends StatelessWidget {
       const Padding(padding: EdgeInsets.all(2)),
       Text(
         text,
-        style: TextStyle(fontSize: 13),
+        style: const TextStyle(fontSize: 13),
       )
     ]);
   }
@@ -46,7 +46,7 @@ class PropertyAmenities extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildSingleAmenities(Icons.sunny, "AC"),
-        SizedBox(width: 150),
+        const SizedBox(width: 150),
         _buildSingleAmenities(Icons.sports_gymnastics, "Gym"),
       ],
     );
@@ -57,7 +57,7 @@ class PropertyAmenities extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildSingleAmenities(Icons.atm_outlined, "ATM"),
-        SizedBox(width: 140),
+        const SizedBox(width: 140),
         _buildSingleAmenities(Icons.stadium_outlined, "Play Ground"),
       ],
     );
@@ -68,7 +68,7 @@ class PropertyAmenities extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         _buildSingleAmenities(Icons.family_restroom_outlined, "Rest Room"),
-        SizedBox(width: 100),
+        const SizedBox(width: 100),
         _buildSingleAmenities(Icons.moving_rounded, "Garden"),
       ],
     );

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_application_1/constants/theme.dart';
-
 import 'package:flutter_application_1/screens/property_details/first_container.dart';
 import 'package:flutter_application_1/screens/property_details/propert_bottom_bar/property_bottom_bar.dart';
 import 'package:flutter_application_1/screens/property_details/property_image_carousel.dart';
@@ -41,9 +39,9 @@ class PropertyDetailsPhotos extends StatelessWidget {
       actions: <Widget>[
         GestureDetector(
             onTap: () {
-              print("Tapped");
+              debugPrint("Tapped");
             },
-            child: Icon(Icons.more_vert))
+            child: const Icon(Icons.more_vert))
       ],
     );
   }

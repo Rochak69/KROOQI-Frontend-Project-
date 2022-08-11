@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/property_details/details_screen/profile_completion.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../Utils/container_decorations.dart';
-import '../../Utils/small_colored_text.dart';
 import '../../constants/theme.dart';
 
 class FirstContainer extends StatelessWidget {
@@ -29,7 +27,7 @@ class FirstContainer extends StatelessWidget {
           _buildDivider(),
           _buildProfileCompletionIndicator(),
           const SizedBox(height: 5),
-          ProfileCompletionExpansion()
+          const ProfileCompletionExpansion()
         ]),
       ),
     );

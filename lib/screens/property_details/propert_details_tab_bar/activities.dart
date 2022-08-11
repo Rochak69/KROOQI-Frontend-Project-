@@ -65,7 +65,7 @@ class ActivitiesTab extends StatelessWidget {
 
   _buildActivities() {
     return Row(
-      children: [
+      children: const [
         Icon(
           Icons.check_circle_outline,
           size: 40,

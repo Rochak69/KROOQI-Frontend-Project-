@@ -1,8 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../../../Utils/container_decorations.dart';
 
 class DetailsExpansionTiles extends StatefulWidget {
@@ -21,7 +17,7 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
         Container(
           decoration: _boxDecoration(),
           child: ExpansionTile(
-            childrenPadding: EdgeInsets.all(10),
+            childrenPadding: const EdgeInsets.all(10),
             title: const Text(
               'Floor Plans',
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -33,7 +29,7 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
             ),
             children: [
               _buildFloorPlan(),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               _buildFloorPlan(),
@@ -67,19 +63,19 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
 
   _buildAgencyBody() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       child: Column(
         children: [
           Row(
             children: [
-              CircleAvatar(
+              const CircleAvatar(
                 backgroundImage: AssetImage("assets/building.JPG"),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               Column(
-                children: [
+                children: const [
                   Text("Landmark Properties"),
                   Text(
                     "Riyadha, Saudi Arabia",
@@ -89,12 +85,12 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
               )
             ],
           ),
-          Divider(
+          const Divider(
             height: 25,
             thickness: 1,
           ),
           Row(
-            children: [
+            children: const [
               CircleAvatar(
                 backgroundImage: NetworkImage(
                     "https://thumbs.dreamstime.com/z/arab-person-24916754.jpg"),
@@ -125,17 +121,18 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
 
   _buildFloorPlan() {
     return Container(
-      padding: EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
       decoration: shadowedCircularContainer(),
       child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(15),
-          child: Image(height: 85, image: AssetImage("assets/property3.jpg")),
+          child: const Image(
+              height: 85, image: AssetImage("assets/property3.jpg")),
         ),
-        SizedBox(width: 10),
+        const SizedBox(width: 10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: const [
             Text(
               "Title",
               style: TextStyle(color: Colors.grey),
@@ -146,11 +143,11 @@ class _DetailsExpansionTilesState extends State<DetailsExpansionTiles> {
             )
           ],
         ),
-        SizedBox(
+        const SizedBox(
           width: 75,
         ),
         Column(
-          children: [
+          children: const [
             SizedBox(
               height: 40,
             ),

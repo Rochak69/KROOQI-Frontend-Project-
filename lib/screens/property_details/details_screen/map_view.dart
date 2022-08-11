@@ -46,7 +46,7 @@ class PropertyMapView extends StatelessWidget {
       actions: <Widget>[
         GestureDetector(
             onTap: () {
-              print("Tapped");
+              debugPrint("Tapped");
             },
             child: const Icon(Icons.more_vert))
       ],
