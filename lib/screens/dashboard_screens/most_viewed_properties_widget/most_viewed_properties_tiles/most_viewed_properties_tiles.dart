@@ -17,52 +17,48 @@ class MostViewedPropertiesTiles extends StatelessWidget {
     final propertiesData = Provider.of<Properties>(context);
     final properties = propertiesData.items;
 
-    return SizedBox(
-      height: 500,
-      child: ListView.builder(
-        // shrinkWrap: true,
-        itemCount: properties.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 20.0),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, PropertyDetailsPhotos.name);
-              },
-              child: Container(
-                decoration: _boxDecorationTiles(),
-                child: Column(
-                  children: [
-                    _buildPropertyImage(properties, index),
-                    _buildPublishedDate(properties, index),
-                    _buildApartmentName(properties, index),
-                    const SizedBox(height: 5),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 18.0, left: 18.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          ApartmentLocationAndPrice(properties, index),
-                          const SizedBox(height: 7),
-                          const Divider(thickness: 2),
-                          const SizedBox(height: 7),
-                          _buildProfileName(properties, index),
-                          const SizedBox(height: 7),
-                          _buildProfileCompletionIndicator(),
-                          const SizedBox(height: 8),
-                          _buildProfileCompletionValue(properties, index),
-                          const SizedBox(height: 20),
-                          const BottomThreeIcons(),
-                        ],
-                      ),
-                    ),
-                  ],
+    return ListView.separated(
+      separatorBuilder: (context, index) => const Divider(),
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: properties.length,
+      itemBuilder: (BuildContext context, int index) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, PropertyDetailsPhotos.name);
+          },
+          child: Container(
+            decoration: _boxDecorationTiles(),
+            child: Column(
+              children: [
+                _buildPropertyImage(properties, index),
+                _buildPublishedDate(properties, index),
+                _buildApartmentName(properties, index),
+                const SizedBox(height: 5),
+                Padding(
+                  padding: const EdgeInsets.only(right: 18.0, left: 18.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      ApartmentLocationAndPrice(properties, index),
+                      const SizedBox(height: 7),
+                      const Divider(thickness: 2),
+                      const SizedBox(height: 7),
+                      _buildProfileName(properties, index),
+                      const SizedBox(height: 7),
+                      _buildProfileCompletionIndicator(),
+                      const SizedBox(height: 8),
+                      _buildProfileCompletionValue(properties, index),
+                      const SizedBox(height: 20),
+                      const BottomThreeIcons(),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          );
-        },
-      ),
+          ),
+        );
+      },
     );
   }
 
