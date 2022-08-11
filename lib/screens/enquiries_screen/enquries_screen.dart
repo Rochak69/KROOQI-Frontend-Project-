@@ -20,19 +20,25 @@ class EnquriesScreen extends StatelessWidget {
       appBar: const TopBar(),
       body: ChangeNotifierProvider(
         create: (context) => EnquiryProvider(),
-        child: Container(
-          padding: const EdgeInsets.all(30),
-          decoration:
-              BoxDecoration(color: Colors.white, borderRadius: topBorderOnly()),
-          child: Column(children: const [
-            SizedBox(height: 10),
-            EnquiriesToogleSwitch(),
-            SizedBox(height: 20),
-            EnquiryDetails(),
-          ]),
+        child: SingleChildScrollView(
+          child: _buildBody(),
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+
+  _buildBody() {
+    return Container(
+      padding: const EdgeInsets.all(30),
+      decoration:
+          BoxDecoration(color: Colors.white, borderRadius: topBorderOnly()),
+      child: Column(children: const [
+        SizedBox(height: 10),
+        EnquiriesToogleSwitch(),
+        SizedBox(height: 20),
+        EnquiryDetails(),
+      ]),
     );
   }
 }

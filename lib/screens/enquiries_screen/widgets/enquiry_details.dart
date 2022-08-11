@@ -16,6 +16,7 @@ class EnquiryDetails extends StatelessWidget {
     return ListView.separated(
       separatorBuilder: (BuildContext context, int index) => const Divider(),
       shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       itemCount: enquiries.length,
       itemBuilder: (BuildContext context, int index) {
         return Container(
@@ -59,11 +60,11 @@ class EnquiryDetails extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(enquiries[index].companyName,
-            style: TextStyle(color: Colors.white)),
-        SizedBox(height: 1),
+            style: const TextStyle(color: Colors.white)),
+        const SizedBox(height: 1),
         Text(
           enquiries[index].personName,
-          style: TextStyle(color: Colors.white, fontSize: 10),
+          style: const TextStyle(color: Colors.white, fontSize: 10),
         )
       ],
     );
