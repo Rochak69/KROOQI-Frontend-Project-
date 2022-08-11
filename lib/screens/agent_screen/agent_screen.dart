@@ -5,7 +5,9 @@ import 'package:flutter_application_1/screens/agent_screen/agent_card/agent_card
 import 'package:flutter_application_1/screens/agent_screen/widget/search_bar.dart';
 import 'package:flutter_application_1/widgets/floating_action_button.dart';
 import 'package:flutter_application_1/widgets/top_bar.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/agents_provider.dart';
 import '../../widgets/bottom_nav_bar.dart';
 
 class AgentScreen extends StatelessWidget {
@@ -33,11 +35,9 @@ class AgentScreen extends StatelessWidget {
                 children: [
                   const SearchBar(),
                   Padding(padding: EdgeInsets.all(height * 0.02)),
-                  const AgentCard(),
-                  Padding(padding: EdgeInsets.all(height * 0.02)),
-                  const AgentCard(),
-                  Padding(padding: EdgeInsets.all(height * 0.02)),
-                  const AgentCard(),
+                  ChangeNotifierProvider(
+                      create: (context) => AgentsProvider(),
+                      child: const AgentCard()),
                 ],
               ),
             ),

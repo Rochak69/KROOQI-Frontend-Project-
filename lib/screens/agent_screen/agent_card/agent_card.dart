@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/providers/agents_provider.dart';
+import 'package:provider/provider.dart';
 
+import '../../../models/agent.dart';
 import '../../welcome_pages/sign_in_screen/sign_in_screen.dart';
 
 class AgentCard extends StatelessWidget {
@@ -7,56 +10,57 @@ class AgentCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, SignInScreen.name);
-      },
-      child: Container(
-        decoration: _multiColoredContainer(),
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Column(children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [_buildProfile(), _buildArabName()],
-            ),
-            const SizedBox(height: 40),
-            Row(
-              children: [
-                _buildBottomIcons(),
-                const Padding(padding: EdgeInsets.all(15)),
-                _buildBottomIcons(),
-                const Padding(padding: EdgeInsets.all(15)),
-                _buildBottomIcons()
-              ],
-            )
-          ]),
-        ),
-      ),
-    );
+    final agentsData = Provider.of<AgentsProvider>(context);
+    final agents = agentsData.items;
+
+    return ListView.separated(
+        physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        separatorBuilder: (context, index) => const SizedBox(height: 20),
+        itemCount: agents.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+              onTap: () {
+                Navigator.pushNamed(context, SignInScreen.name);
+              },
+              child: Container(
+                padding: const EdgeInsets.all(15),
+                decoration: _multiColoredContainer(),
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildProfile(agents, index),
+                      _buildArabName(agents, index)
+                    ],
+                  ),
+                  const SizedBox(height: 40),
+                  _buildThreeBottomIcons()
+                ]),
+              ));
+        });
   }
 
-  _buildProfile() {
+  _buildProfile(List<Agent> agents, int index) {
     return Row(
-      children: const [
+      children: [
         CircleAvatar(
-          foregroundImage: NetworkImage(
-              "https://thumbs.dreamstime.com/z/arab-person-24916754.jpg"),
+          foregroundImage: NetworkImage(agents[index].imageUrl),
         ),
-        SizedBox(width: 3),
+        const SizedBox(width: 3),
         Text(
-          "Nijas Nazar",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          agents[index].name,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         )
       ],
     );
   }
 
-  _buildArabName() {
+  _buildArabName(List<Agent> agents, int index) {
     return Row(
       children: [
         Column(
-          children: const [SizedBox(height: 30), Text("AAA")],
+          children: [const SizedBox(height: 30), Text(agents[index].urduName)],
         )
       ],
     );
@@ -99,6 +103,18 @@ class AgentCard extends StatelessWidget {
         Padding(padding: EdgeInsets.all(2)),
         Text("20")
       ]),
+    );
+  }
+
+  _buildThreeBottomIcons() {
+    return Row(
+      children: [
+        _buildBottomIcons(),
+        const Padding(padding: EdgeInsets.all(15)),
+        _buildBottomIcons(),
+        const Padding(padding: EdgeInsets.all(15)),
+        _buildBottomIcons()
+      ],
     );
   }
 }
