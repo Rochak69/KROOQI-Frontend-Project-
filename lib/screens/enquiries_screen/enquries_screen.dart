@@ -5,6 +5,9 @@ import 'package:flutter_application_1/screens/enquiries_screen/widgets/enquiries
 import 'package:flutter_application_1/screens/enquiries_screen/widgets/enquiry_details.dart';
 import 'package:flutter_application_1/widgets/bottom_nav_bar.dart';
 import 'package:flutter_application_1/widgets/top_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../../providers/enquiries_provider.dart';
 
 class EnquriesScreen extends StatelessWidget {
   static const name = '3';
@@ -15,24 +18,19 @@ class EnquriesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: kColorAccent,
       appBar: const TopBar(),
-      body: Container(
-        padding: const EdgeInsets.all(30),
-        decoration:
-            BoxDecoration(color: Colors.white, borderRadius: topBorderOnly()),
-        child: Column(children: const [
-          SizedBox(height: 10),
-          EnquiriesToogleSwitch(),
-          SizedBox(height: 20),
-          EnquiryDetails(),
-          SizedBox(height: 20),
-          EnquiryDetails(),
-          SizedBox(height: 20),
-          EnquiryDetails(),
-          SizedBox(height: 20),
-          EnquiryDetails(),
-          SizedBox(height: 20),
-          EnquiryDetails(),
-        ]),
+      body: ChangeNotifierProvider(
+        create: (context) => EnquiryProvider(),
+        child: Container(
+          padding: const EdgeInsets.all(30),
+          decoration:
+              BoxDecoration(color: Colors.white, borderRadius: topBorderOnly()),
+          child: Column(children: const [
+            SizedBox(height: 10),
+            EnquiriesToogleSwitch(),
+            SizedBox(height: 20),
+            EnquiryDetails(),
+          ]),
+        ),
       ),
       bottomNavigationBar: const BottomNavBar(),
     );

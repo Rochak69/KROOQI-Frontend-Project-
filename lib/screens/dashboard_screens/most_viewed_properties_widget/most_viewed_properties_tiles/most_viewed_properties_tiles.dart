@@ -42,7 +42,7 @@ class MostViewedPropertiesTiles extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          const ApartmentLocationAndPrice(),
+                          ApartmentLocationAndPrice(properties, index),
                           const SizedBox(height: 7),
                           const Divider(thickness: 2),
                           const SizedBox(height: 7),

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/theme.dart';
-import 'package:flutter_application_1/screens/agent_screen/widget/search_bar.dart';
+
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties.dart';
-import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/most_viewed_properties_tiles.dart';
 
 class TabBarContent extends StatefulWidget {
   const TabBarContent({Key? key}) : super(key: key);
@@ -39,35 +38,35 @@ class _TabBarContentState extends State<TabBarContent>
         _buildTabBar(),
         SizedBox(
           height: 1800,
-          child: TabBarView(controller: _tabController, children: [
-            _buildAllProperties(),
-            const MostViewedPropertiesWidget(),
-            const Text("Pending", style: TextStyle(fontSize: 24))
+          child: TabBarView(controller: _tabController, children: const [
+            MostViewedPropertiesWidget(),
+            MostViewedPropertiesWidget(),
+            Text("Pending", style: TextStyle(fontSize: 24))
           ]),
         )
       ],
     );
   }
 
-  _buildAllProperties() {
-    return Padding(
-      padding: const EdgeInsets.all(25.0),
-      child: Column(
-        children: const [
-          SearchBar(),
-          SizedBox(height: 20),
-          MostViewedPropertiesTiles(),
-          SizedBox(height: 20),
-          MostViewedPropertiesTiles(),
-          SizedBox(height: 20),
-          MostViewedPropertiesTiles(),
-          SizedBox(height: 20),
-          MostViewedPropertiesTiles(),
-          SizedBox(height: 20)
-        ],
-      ),
-    );
-  }
+  // _buildAllProperties() {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(25.0),
+  //     child: Column(
+  //       children: const [
+  //         SearchBar(),
+  //         SizedBox(height: 20),
+  //         MostViewedPropertiesTiles(),
+  //         SizedBox(height: 20),
+  //         MostViewedPropertiesTiles(),
+  //         SizedBox(height: 20),
+  //         MostViewedPropertiesTiles(),
+  //         SizedBox(height: 20),
+  //         MostViewedPropertiesTiles(),
+  //         SizedBox(height: 20)
+  //       ],
+  //     ),
+  //   );
+  // }
 
   _buildTabBar() {
     return TabBar(

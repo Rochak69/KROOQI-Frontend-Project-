@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/small_colored_text.dart';
 import 'package:flutter_application_1/constants/theme.dart';
+import 'package:flutter_application_1/providers/enquiries_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../../../models/enquiries.dart';
 
 class EnquiryDetails extends StatelessWidget {
   const EnquiryDetails({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.all(16),
-        decoration: _enquiryContainerDecoration(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildCircleAvatar(),
-            const SizedBox(width: 10),
-            _buildName(),
-            _buildSmallWhiteContainer()
-          ],
-        ));
+    final enquiryData = Provider.of<EnquiryProvider>(context);
+    final enquiries = enquiryData.items;
+    return ListView.separated(
+      separatorBuilder: (BuildContext context, int index) => const Divider(),
+      shrinkWrap: true,
+      itemCount: enquiries.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+            padding: const EdgeInsets.all(16),
+            decoration: _enquiryContainerDecoration(),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                _buildCircleAvatar(enquiries, index),
+                const SizedBox(width: 10),
+                _buildName(enquiries, index),
+                _buildSmallWhiteContainer(enquiries, index)
+              ],
+            ));
+      },
+    );
   }
 
   _enquiryContainerDecoration() {
@@ -35,34 +48,34 @@ class EnquiryDetails extends StatelessWidget {
     );
   }
 
-  _buildCircleAvatar() {
-    return const CircleAvatar(
-      backgroundImage: NetworkImage(
-          "https://image.shutterstock.com/image-vector/logistic-other-ways-logo-template-600w-1984526201.jpg"),
+  _buildCircleAvatar(List<Enquiry> enquiries, int index) {
+    return CircleAvatar(
+      backgroundImage: NetworkImage(enquiries[index].imageUrl),
     );
   }
 
-  _buildName() {
+  _buildName(List<Enquiry> enquiries, int index) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
-        Text("Codeware labs Codeware ", style: TextStyle(color: Colors.white)),
+      children: [
+        Text(enquiries[index].companyName,
+            style: TextStyle(color: Colors.white)),
         SizedBox(height: 1),
         Text(
-          "Rochak Shrestha",
+          enquiries[index].personName,
           style: TextStyle(color: Colors.white, fontSize: 10),
         )
       ],
     );
   }
 
-  _buildSmallWhiteContainer() {
+  _buildSmallWhiteContainer(List<Enquiry> enquiries, int index) {
     return Container(
       height: 20,
       width: 40,
       decoration: BoxDecoration(
           color: Colors.white, borderRadius: BorderRadius.circular(25)),
-      child: Center(child: SmallColoredText("2/5")),
+      child: Center(child: SmallColoredText(enquiries[index].completedEnquiry)),
     );
   }
 }
