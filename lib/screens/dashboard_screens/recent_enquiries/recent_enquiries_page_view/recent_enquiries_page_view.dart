@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/theme.dart';
+import 'package:flutter_application_1/providers/recent_enquiries_provider.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../models/rencent_enquiry.dart';
 
 class RecentEnquiriesPageView extends StatefulWidget {
   const RecentEnquiriesPageView({Key? key}) : super(key: key);
@@ -13,51 +17,53 @@ class _RecentEnquiriesPageViewState extends State<RecentEnquiriesPageView> {
 
   @override
   Widget build(BuildContext context) {
+    final recentEnquiryData = Provider.of<RecentEnquiryProvider>(context);
+    final recentEnquiries = recentEnquiryData.items;
     return SizedBox(
         height: 225,
         child: PageView.builder(
             controller: pageController,
-            itemCount: 2,
-            itemBuilder: (context, position) {
+            itemCount: recentEnquiries.length,
+            itemBuilder: (context, index) {
               return Container(
+                  padding: const EdgeInsets.all(16.0),
                   margin: const EdgeInsets.only(left: 5, right: 10),
                   decoration: _containerDecorationDualColor(),
-                  child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(children: [
-                        _buildApartment(),
-                        const SizedBox(height: 5),
-                        _buildApartmentName(),
-                        const SizedBox(height: 16),
-                        _buildHorizontalDivider(),
-                        const SizedBox(height: 16),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            _buildEnquiryPersonDetails(),
-                            _buildEnquiryPersonDetails()
-                          ],
-                        ),
-                        const SizedBox(height: 35),
-                        _buildEnquiryMessage()
-                      ])));
+                  child: Column(children: [
+                    _buildPropertyType(recentEnquiries, index),
+                    const SizedBox(height: 5),
+                    _buildPropertyName(recentEnquiries, index),
+                    const SizedBox(height: 16),
+                    _buildHorizontalDivider(),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        _buildEnquiryPersonDetails(recentEnquiries, index),
+                        _buildEnquiryPersonDetails(recentEnquiries, index)
+                      ],
+                    ),
+                    const SizedBox(height: 35),
+                    _buildEnquiryMessage(recentEnquiries, index)
+                  ]));
             }));
   }
 
-  Row _buildEnquiryPersonDetails() {
+  Row _buildEnquiryPersonDetails(
+      List<RecentEnquiry> recentEnquiries, int index) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const CircleAvatar(
-          backgroundImage: NetworkImage(
-              "https://thumbs.dreamstime.com/z/arab-person-24916754.jpg"),
+        CircleAvatar(
+          backgroundImage: NetworkImage(recentEnquiries[index].imageUrl),
         ),
         Column(
-          children: const [
-            Text("Customer",
-                style: TextStyle(color: Colors.grey, fontSize: 13)),
-            Text("Codeware Lab",
-                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
+          children: [
+            Text(recentEnquiries[index].personName,
+                style: const TextStyle(color: Colors.grey, fontSize: 13)),
+            Text(recentEnquiries[index].companyName,
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold))
           ],
         )
       ],
@@ -72,33 +78,33 @@ class _RecentEnquiriesPageViewState extends State<RecentEnquiriesPageView> {
     );
   }
 
-  Align _buildApartmentName() {
-    return const Align(
+  Align _buildPropertyName(List<RecentEnquiry> recentEnquiries, int index) {
+    return Align(
       alignment: Alignment.topLeft,
       child: Text(
-        "Emirates Skyline Building",
-        style: TextStyle(fontWeight: FontWeight.bold),
+        recentEnquiries[index].propertyName,
+        style: const TextStyle(fontWeight: FontWeight.bold),
       ),
     );
   }
 
-  Align _buildApartment() {
+  Align _buildPropertyType(List<RecentEnquiry> recentEnquiries, int index) {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
           padding: const EdgeInsets.all(5),
           decoration: BoxDecoration(
               color: kColorAccent, borderRadius: BorderRadius.circular(25)),
-          child: const Text(
-            "Apartment",
+          child: Text(
+            recentEnquiries[index].propertType,
           )),
     );
   }
 
-  Text _buildEnquiryMessage() {
-    return const Text(
-      "Can you share the location of the ",
-      style: TextStyle(color: Colors.grey, fontSize: 15),
+  Text _buildEnquiryMessage(List<RecentEnquiry> recentEnquiries, int index) {
+    return Text(
+      recentEnquiries[index].enquiryDescription,
+      style: const TextStyle(color: Colors.grey, fontSize: 15),
     );
   }
 
