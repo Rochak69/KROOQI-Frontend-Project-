@@ -3,6 +3,7 @@ class Property {
   String date;
   String description;
   String location, profileName, profileCompletionValue, price;
+
   Property(
       {required this.imageUrl,
       required this.date,

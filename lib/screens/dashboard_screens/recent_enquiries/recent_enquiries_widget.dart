@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/big_text.dart';
-import 'package:flutter_application_1/providers/agents_provider.dart';
 import 'package:flutter_application_1/providers/recent_enquiries_provider.dart';
 import 'package:provider/provider.dart';
-
 import '../../../Utils/container_decorations.dart';
-
 import 'recent_enquiries_page_view/recent_enquiries_page_view.dart';
 
 class RecentEnquiriesWidget extends StatelessWidget {
