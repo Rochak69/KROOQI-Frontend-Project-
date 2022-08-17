@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/api/api_service.dart';
 import 'package:flutter_application_1/models/property.dart';
 import 'package:flutter_application_1/providers/properties_provider.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/apartment_location_and_price.dart';
@@ -25,7 +26,8 @@ class MostViewedPropertiesTiles extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, PropertyDetailsPhotos.name);
+            // Navigator.pushNamed(context, PropertyDetailsPhotos.name);
+            ApiService.getPropertyData();
           },
           child: Container(
             decoration: _boxDecorationTiles(),
