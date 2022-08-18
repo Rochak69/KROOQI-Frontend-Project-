@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/big_text.dart';
+import 'package:flutter_application_1/models/property.dart';
 import 'package:flutter_application_1/providers/properties_provider.dart';
+import 'package:flutter_application_1/providers/test.dart';
 
 import '../../../Utils/container_decorations.dart';
 

@@ -13,14 +13,14 @@ class Property {
       required this.profileCompletionValue,
       required this.price});
 
-  factory Property.fromJson(Map<String, dynamic> json) {
-    return Property(
-        imageUrl: json["imageUrl"] ?? "",
-        date: json["imageUrl"] ?? "",
-        description: json["imageUrl"] ?? "",
-        location: json["imageUrl"] ?? "",
-        profileName: json["imageUrl"] ?? "",
-        profileCompletionValue: json["imageUrl"] ?? "",
-        price: json["imageUrl"] ?? "");
-  }
+  // factory Property.fromJson(Map<String, dynamic> json) {
+  //   return Property(
+  //       imageUrl: json["imageUrl"] ?? "",
+  //       date: json["date"] ?? "",
+  //       description: json["description"] ?? "",
+  //       location: json["location"] ?? "",
+  //       profileName: json["profileName"] ?? "",
+  //       profileCompletionValue: json["profileCompletionValue"] ?? "",
+  //       price: json["price"] ?? "");
+  // }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/big_text.dart';
 import 'package:flutter_application_1/Utils/small_colored_text.dart';
 
+import 'package:flutter_application_1/api/api_service_class.dart';
+
 import '../../../Utils/container_decorations.dart';
 import '../../welcome_pages/sign_in_screen/sign_in_screen.dart';
 
@@ -12,6 +14,7 @@ class NewMessagesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
+
     return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, SignInScreen.name);

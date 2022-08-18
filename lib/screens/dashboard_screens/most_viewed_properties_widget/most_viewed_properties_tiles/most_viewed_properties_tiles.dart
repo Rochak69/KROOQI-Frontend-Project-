@@ -1,67 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/api/api_service.dart';
+
+import 'package:flutter_application_1/api/api_service_class.dart';
 import 'package:flutter_application_1/models/property.dart';
-import 'package:flutter_application_1/providers/properties_provider.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/apartment_location_and_price.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/bottom_three_icons.dart';
-import 'package:flutter_application_1/screens/property_details/details_screen/property_details_photos.dart';
+
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import '../../../../constants/theme.dart';
-import 'package:provider/provider.dart';
 
-class MostViewedPropertiesTiles extends StatelessWidget {
+class MostViewedPropertiesTiles extends StatefulWidget {
   const MostViewedPropertiesTiles({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    final propertiesData = Provider.of<Properties>(context);
-    final properties = propertiesData.items;
+  State<MostViewedPropertiesTiles> createState() =>
+      _MostViewedPropertiesTilesState();
+}
 
-    return ListView.separated(
-      separatorBuilder: (context, index) => const Divider(),
-      shrinkWrap: true,
-      physics: const NeverScrollableScrollPhysics(),
-      itemCount: properties.length,
-      itemBuilder: (BuildContext context, int index) {
-        return GestureDetector(
-          onTap: () {
-            // Navigator.pushNamed(context, PropertyDetailsPhotos.name);
-            ApiService.getPropertyData();
-          },
-          child: Container(
-            decoration: _boxDecorationTiles(),
-            child: Column(
-              children: [
-                _buildPropertyImage(properties, index),
-                _buildPublishedDate(properties, index),
-                _buildApartmentName(properties, index),
-                const SizedBox(height: 5),
-                Padding(
-                  padding: const EdgeInsets.only(right: 18.0, left: 18.0),
+class _MostViewedPropertiesTilesState extends State<MostViewedPropertiesTiles> {
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    // final postModel = Provider.of<Test>(context, listen: false);
+    // postModel.fetchData();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // final propertiesData = Provider.of<Properties>(context);
+    // final properties = propertiesData.items;
+
+    // final propertiesData = Provider.of<Test>(context);
+    // final properties = propertiesData.properties;
+
+    return FutureBuilder(
+        future: getPropertiesData(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return ListView.separated(
+            separatorBuilder: (context, index) => const Divider(),
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemCount: snapshot.data.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  // Navigator.pushNamed(context, PropertyDetailsPhotos.name);
+                  // print();
+                },
+                child: Container(
+                  decoration: _boxDecorationTiles(),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      ApartmentLocationAndPrice(properties, index),
-                      const SizedBox(height: 7),
-                      const Divider(thickness: 2),
-                      const SizedBox(height: 7),
-                      _buildProfileName(properties, index),
-                      const SizedBox(height: 7),
-                      _buildProfileCompletionIndicator(),
-                      const SizedBox(height: 8),
-                      _buildProfileCompletionValue(properties, index),
-                      const SizedBox(height: 20),
-                      const BottomThreeIcons(),
+                      _buildPropertyImage(snapshot.data, index),
+                      _buildPublishedDate(snapshot.data, index),
+                      _buildApartmentName(snapshot.data, index),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 18.0, left: 18.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: [
+                            ApartmentLocationAndPrice(snapshot.data, index),
+                            const SizedBox(height: 7),
+                            const Divider(thickness: 2),
+                            const SizedBox(height: 7),
+                            _buildProfileName(snapshot.data, index),
+                            const SizedBox(height: 7),
+                            _buildProfileCompletionIndicator(),
+                            const SizedBox(height: 8),
+                            _buildProfileCompletionValue(snapshot.data, index),
+                            const SizedBox(height: 20),
+                            const BottomThreeIcons(),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
-              ],
-            ),
-          ),
-        );
-      },
-    );
+              );
+            },
+          );
+        });
   }
 
   _buildPropertyImage(List<Property> properties, int index) {
