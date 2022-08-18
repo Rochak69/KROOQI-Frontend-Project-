@@ -4,7 +4,8 @@ import 'package:flutter_application_1/screens/properties_screen/widgets/top_toog
 import 'package:flutter_application_1/widgets/floating_action_button.dart';
 import 'package:flutter_application_1/widgets/top_bar.dart';
 import 'package:provider/provider.dart';
-import '../../providers/properties_provider.dart';
+
+import '../../models/providers/properties_provider.dart';
 import '../../widgets/bottom_nav_bar.dart';
 
 class PropertiesScreen extends StatelessWidget {
