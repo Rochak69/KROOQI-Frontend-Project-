@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/providers/agents_provider.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../models/agent.dart';
+import '../../../models/providers/agents_provider.dart';
 import '../../welcome_pages/sign_in_screen/sign_in_screen.dart';
 
 class AgentCard extends StatelessWidget {

@@ -7,7 +7,7 @@ import 'package:flutter_application_1/widgets/bottom_nav_bar.dart';
 import 'package:flutter_application_1/widgets/top_bar.dart';
 import 'package:provider/provider.dart';
 
-import '../../providers/enquiries_provider.dart';
+import '../../models/providers/enquiries_provider.dart';
 
 class EnquriesScreen extends StatelessWidget {
   static const name = '3';

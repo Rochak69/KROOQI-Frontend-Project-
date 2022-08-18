@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/agent.dart';
+import '../agent.dart';
 
 class AgentsProvider with ChangeNotifier {
   final List<Agent> _items = [

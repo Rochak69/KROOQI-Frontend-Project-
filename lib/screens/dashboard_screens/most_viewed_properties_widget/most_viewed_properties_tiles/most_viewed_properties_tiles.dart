@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_application_1/api/api_service_class.dart';
 import 'package:flutter_application_1/models/property.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/apartment_location_and_price.dart';
 import 'package:flutter_application_1/screens/dashboard_screens/most_viewed_properties_widget/most_viewed_properties_tiles/bottom_three_icons.dart';
-
 import 'package:percent_indicator/linear_percent_indicator.dart';
-
 import '../../../../constants/theme.dart';
+import '../../../../models/api_service/api_service_class.dart';
 
 class MostViewedPropertiesTiles extends StatefulWidget {
   const MostViewedPropertiesTiles({Key? key}) : super(key: key);

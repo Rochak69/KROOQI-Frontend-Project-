@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/big_text.dart';
 import 'package:flutter_application_1/models/property.dart';
-import 'package:flutter_application_1/providers/properties_provider.dart';
-import 'package:flutter_application_1/providers/test.dart';
 
 import '../../../Utils/container_decorations.dart';
 
+import '../../../models/providers/properties_provider.dart';
 import 'most_viewed_properties_tiles/most_viewed_properties_tiles.dart';
 import 'package:provider/provider.dart';
 

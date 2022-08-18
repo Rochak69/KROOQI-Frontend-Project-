@@ -1,12 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter_application_1/models/agent.dart';
 import 'package:flutter_application_1/models/property.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 getPropertiesData() async {
-  print("starting");
-
   var response = await http.get(Uri.https("jsonkeeper.com", "b/YTKS"));
   var jsonData = jsonDecode(response.body);
 
@@ -24,4 +23,19 @@ getPropertiesData() async {
   }
   print(properties[0].date);
   return properties;
+}
+
+getAgentsData() async {
+  var response = await http.get(Uri.https("jhttps://jsonkeeper.com", "b/3L13"));
+  var jsonData = jsonDecode(response.body);
+
+  List<Agent> agents = [];
+  for (var i in jsonData) {
+    Agent agent = Agent(
+        imageUrl: i["imageUrl"], name: i["name"], urduName: i["urduName"]);
+    agents.add(agent);
+  }
+  print("agents");
+  print(agents[0].imageUrl);
+  return agents;
 }

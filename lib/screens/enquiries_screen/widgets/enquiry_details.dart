@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/small_colored_text.dart';
 import 'package:flutter_application_1/constants/theme.dart';
-import 'package:flutter_application_1/providers/enquiries_provider.dart';
+
 import 'package:provider/provider.dart';
 
 import '../../../models/enquiries.dart';
+import '../../../models/providers/enquiries_provider.dart';
 
 class EnquiryDetails extends StatelessWidget {
   const EnquiryDetails({Key? key}) : super(key: key);

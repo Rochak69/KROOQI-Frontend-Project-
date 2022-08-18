@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/Utils/big_text.dart';
 import 'package:flutter_application_1/Utils/small_colored_text.dart';
-
-import 'package:flutter_application_1/api/api_service_class.dart';
-
 import '../../../Utils/container_decorations.dart';
 import '../../welcome_pages/sign_in_screen/sign_in_screen.dart';
 

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/constants/theme.dart';
-import 'package:flutter_application_1/providers/recent_enquiries_provider.dart';
+
 import 'package:provider/provider.dart';
 
+import '../../../../models/providers/recent_enquiries_provider.dart';
 import '../../../../models/rencent_enquiry.dart';
 
 class RecentEnquiriesPageView extends StatefulWidget {

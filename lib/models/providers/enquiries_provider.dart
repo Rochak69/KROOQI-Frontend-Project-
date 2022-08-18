@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../models/enquiries.dart';
+import '../enquiries.dart';
 
 class EnquiryProvider with ChangeNotifier {
   final List<Enquiry> _items = [
